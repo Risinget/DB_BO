@@ -1,0 +1,14 @@
+# Activar motor de reescritura
+RewriteEngine On
+
+# Bloquear todos los archivos .php excepto index.php y api.php
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteCond %{REQUEST_URI} !/index\.php$
+RewriteCond %{REQUEST_URI} !/api\.php$
+RewriteCond %{REQUEST_URI} !/telefonia\.php$
+RewriteRule \.php$ - [F,L]
+
+# Opcional: bloquear acceso a otros archivos sensibles
+<FilesMatch "\.(htaccess|env|ini|db|sqlite|json|txt)$">
+    Require all denied
+</FilesMatch>
