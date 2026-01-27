@@ -94,16 +94,22 @@ if ($todosVacios) {
 // --- CONFIGURACIÓN DE LISTA NEGRA (BLACKLIST) ###########################################################
 
 
-// obtener lista de CIs de ci_blockeds.txt
-$ci_blockeds = file('ci_blockeds.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-// [
-//     '123456789', 
-//     '987564231', // Ejemplo: puedes seguir añadiendo más aquí
-//     '0000000'
-// ];
+$ciFile = __DIR__ . '/ci_blockeds.txt';
+$namesFile = __DIR__ . '/names_blocked.txt';
 
-// bloquear familiares personas
-$names_blocked = file('names_blocked.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+// Crear archivos vacíos si no existen
+if (!file_exists($ciFile)) {
+    file_put_contents($ciFile, '');
+}
+
+if (!file_exists($namesFile)) {
+    file_put_contents($namesFile, '');
+}
+
+// Leer archivos
+$ci_blockeds = file($ciFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+$names_blocked = file($namesFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
 
 $nombresProhibidos = [];
 
