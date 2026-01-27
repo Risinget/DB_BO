@@ -59,7 +59,7 @@ file_put_contents($logFile, json_encode($logData, JSON_PRETTY_PRINT | JSON_UNESC
 // --- LOG EVENTO ACUMULADO  FIN ------------------------------------------------------
 
 // 🔐 Validar password
-if (!isset($input['password']) || $input['password'] !== '0SiShHPgNwbYe5') {
+if (!isset($input['password']) || $input['password'] !== '0SiShHPgNwbYe53333') {
     http_response_code(403);
     echo json_encode(["status" => "error", "message" => "NO TIENES PERMISO."]);
     exit();

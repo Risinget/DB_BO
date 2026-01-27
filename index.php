@@ -1,5 +1,5 @@
 <?php
-if (!isset($_GET['password']) || $_GET['password'] !== '0SiShHPgNwbYe5') {
+if (!isset($_GET['password']) || $_GET['password'] !== '0SiShHPgNwbYe53333') {
     http_response_code(400);
     echo json_encode([
         "status" => "error",
