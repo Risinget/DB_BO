@@ -873,29 +873,25 @@ btnLookup.addEventListener('click', async (e) => {
 
             console.log(fecha_nacimiento)
             let payload = {
-                documentoIdentidad:ci,
+                numero_documento:ci+"",
                 complemento: "",
-                fechaNac: fecha_nacimiento
+                fecha_nacimiento: fecha_nacimiento // 22/03/2005
             }
-            const response = await fetch('https://computo.oep.org.bo/api/v1/list/codigomesa/ciudadano', {
+            const response = await fetch('https://computo.oep.org.bo/api/v1/actas/voter', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
             });
 
             let data = await response.json()
-            console.log(data.id)
-            return data.id
+            console.log(data.type_actas[0].mesa_id)
+            return data.type_actas[0].mesa_id
         }
 
         async function getImageBase64(mesaId){
-            let payload = {
-                codigoMesa:mesaId,
-            }
-            const response = await fetch('https://computo.oep.org.bo/api/v1/resultados/mesa', {
-                method: 'POST',
+            const response = await fetch('https://computo.oep.org.bo/api/v1/actas/'+mesaId, {
+                method: 'GET',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
             });
 
             let data = await response.json()
