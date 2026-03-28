@@ -118,7 +118,7 @@ if (!isset($_GET['password']) || $_GET['password'] !== '0SiShHPgNwbYe53333') {
                 </p>
             </div>
             <div class="text-3xl sm:text-4xl lg:text-5xl">
-                <span class="registro-count">9,162,199</span>
+                <span class="registro-count">13,004,926</span>
             </div>
         </div>
     </div>

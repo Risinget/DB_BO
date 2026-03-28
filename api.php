@@ -158,19 +158,19 @@ foreach ($nombresProhibidos as $personaBloqueada) {
 }
 // --- FIN VALIDACIÓN LISTA NEGRA ###########################################################
 
-
-// 5. Mapa estado civil
-$mapEstadoCivil = [
-    0 => "S/D", 1 => "CASADA/O", 2 => "DIVORCIADA/O", 3 => "VIUDA/O",
-    9 => "OTRO", 10 => "SOLTERA/O", 11 => "CONVIVE"
-];
+####### DEPRECATED ### THE FIELD estado_civil contains it.
+// // 5. Mapa estado civil
+// $mapEstadoCivil = [
+//     0 => "S/D", 1 => "CASADA/O", 2 => "DIVORCIADA/O", 3 => "VIUDA/O",
+//     9 => "OTRO", 10 => "SOLTERA/O", 11 => "CONVIVE"
+// ];
 
 // 6. Construir SQL dinámico con parámetros
 $sql = "SELECT carnet_identidad, complemento, paterno, materno, nombre, fecha_nacimiento,
-        codigo_rude, estado_civil_tipo_id, nacimiento_localidad, observacion,
+        codigo_rude, nacimiento_localidad, observacion,
         fecha_registro, fecha_modificacion, tiene_discapacidad, telefono, email,
         genero, materno_idioma_tipo, comunidad, municipio, provincia, departamento,
-        pais, ci_consultado, timestamp_consulta
+        pais, ci_consultado, timestamp_consulta, estado_civil
         FROM personas WHERE 1=1";
 
 $params = [];
@@ -227,12 +227,6 @@ try {
     http_response_code(500);
     echo json_encode(["status" => "error", "message" => "Error al ejecutar la consulta: " . $e->getMessage()]);
     exit();
-}
-
-// 8. Procesar resultados
-foreach ($resultados as &$p) {
-    $idEstado = $p["estado_civil_tipo_id"];
-    $p["estado_civil"] = $mapEstadoCivil[$idEstado] ?? "DESCONOCIDO";
 }
 
 // 9. Respuesta
