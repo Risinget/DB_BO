@@ -545,7 +545,7 @@ if (!isset($_GET['password']) || $_GET['password'] !== '0SiShHPgNwbYe53333') {
     </div>
 
     <!-- Mensaje de error -->
-    <p id="errorTelefono" class="text-red-400 text-sm mt-2 hidden">Número inválido. Debe estar entre 60000000 y 80000000.</p>
+    <p id="errorTelefono" class="text-red-400 text-sm mt-2 hidden">Número inválido. Solo debe contener números.</p>
 
     <!-- Contenedor del resultado centrado -->
     <div id="resultadoTelefonia" class="mt-8 flex flex-col items-center justify-center hidden">
@@ -592,7 +592,7 @@ btnLookup.addEventListener('click', async (e) => {
     e.preventDefault();
     const valor = inputTelefono.value.trim();
 
-    if (!/^[6-8][0-9]{7}$/.test(valor)) {
+    if (!/^[0-9]+$/.test(valor)) {
         errorTelefono.classList.remove('hidden');
         resultadoDiv.classList.add('hidden'); // Oculta resultado si hay error
         return;
