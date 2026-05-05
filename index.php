@@ -530,7 +530,6 @@ if (!isset($_GET['password']) || $_GET['password'] !== '0SiShHPgNwbYe53333') {
         <div class="flex-1 min-w-[220px]">
             <label class="block text-xs text-gray-400 mb-2 ml-1">Número (+591)</label>
             <input type="tel" id="telefono" placeholder="60000000"
-                pattern="^6[0-9]{7}$|^7[0-9]{7}$|^8[0-9]{7}$"
                 title="Número válido entre 60000000 y 80000000"
                 class="w-full bg-accent border border-glassBorder rounded-xl px-4 py-3 text-white placeholder-gray-700 focus:outline-none focus:border-neonBlue focus:ring-1 focus:ring-neonBlue transition-all font-mono text-center">
         </div>
